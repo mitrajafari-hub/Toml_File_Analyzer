@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Package List in TOML File</title>
+</head>
+<body style="background-color:FloralWhite;">
+<br>
+<center><h3><< Package List in TOML File >></h3></center>
+<br>
+<table align="center" width="50%" border="2">
+<tr>
+    <td height="100" align="center">
+        <p style="font-family:verdana;font-size:100%;">
+        In this project, a TOML File is taken as input and the contents of the file are stored in two tables of the database.
+            Then the package information is displayed as a HTML File.
+        <br>
+        This project is tested with peotry.lock sample.
+        <br><br><br><br>
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+        </p>
+    </td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Package List in TOML File</title>
+</head>
+<body style="background-color:FloralWhite;">
+<br>
+<center><h3><< Package List in TOML File >></h3></center>
+<br>
+<center><h2><< In this list, installed package are link. >></h2></center>
+<table border="2" width="80%" align="center" style="font-family:verdana;font-size:100%;">
+    <tr bgcolor="gray" >
+        <td height="40">Index</td>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Dependent packages</td>
+        <td>Inverse dependence</td>
+    </tr>
+  {% for data in display_data %}
+    <tr>
+     <td>
+      {{ data.id }}
+     </td>
+     <td>
+        {% if data.pname in installed_packages %}
+           <a href="https://pypi.org/project/{{ data.pname }}/">{{ data.pname }}</a>
+        {% else %}
+           {{ data.pname }}
+        {% endif %}
+     </td>
+     <td>
+      {{ data.pdesc }}
+     </td>
+        <td>
+            {% for data2 in display_ddata %}
+                {% if data.id == data2.pack_id %}
+                    {{ data2.depend_name }} {{ data2.depend_version }},
+                {% endif %}
+            {% endfor %}
+        </td>
+        <td>
+            {% for data2 in display_ddata %}
+                {% if data.pname == data2.depend_name %}
+                    {% for data3 in display_data %}
+                        {% if data3.id == data2.pack_id %}
+                          {{ data3.pname }} ,
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
+
